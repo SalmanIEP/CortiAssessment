@@ -1,0 +1,35 @@
+{
+  "name": "automation-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
+    "cy:run:loginfeature": "npx cypress run --spec cypress/e2e/features/login.feature",
+    "cy:run:registerfeature": "npx cypress run --spec cypress/e2e/features/register.feature",
+    "cy:run:userfeature": "npx cypress run --spec cypress/e2e/features/user.feature",
+    "merge": "mochawesome-merge cypress/reports/*.json -o cypress/reports/output.json",
+    "generate_mochawesome_report": "marge cypress/reports/output.json --reportDir ./ --inline",
+    "generate_final_report": "npm run merge && npm run generate_mochawesome_report"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "cypress": "^13.6.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-mailslurp": "^1.3.0",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-errors": "^3.0.0",
+    "faker": "^6.6.6",
+    "json-schema-validator": "^1.1.0",
+    "jsonschema": "^1.4.0",
+    "soft-assert": "^0.2.6"
+  }
+}
